@@ -1,0 +1,13 @@
+prompt 1
+default menu.c32
+timeout 100
+
+label 1. NFS Install
+menu nfs_install
+kernel virtualbox/kernel
+append ip=dhcp console=ttyS3,115200 androidboot.selinux=permissive initrd=virtualbox/initrd.img root=/dev/nfs rw androidboot.hardware=virtualbox DEBUG=2 SRC=virtualbox ROOT=10.0.2.2:/home/hoki/mnt/virtualbox/android-7.1.2_r39/out/target/product qemu=1 qemu.gles=0 DATA=sda2 INSTALL=1
+
+label 2. Boot from /dev/sda1
+menu boot_from_sda1
+kernel virtualbox/kernel
+append ip=dhcp console=ttyS3,115200 androidboot.selinux=permissive initrd=virtualbox/initrd.img androidboot.hardware=virtualbox DEBUG=2 SRC=android-x86 ROOT=/dev/sda1 qemu=1 qemu.gles=0 DATA=sda2
